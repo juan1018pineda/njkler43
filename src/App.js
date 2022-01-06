@@ -17,7 +17,6 @@ class App extends Component {
     this.setState({
       query: event.target.value.toLowerCase(),
     });
-    this.search();
   }
 
   search() {
@@ -25,7 +24,6 @@ class App extends Component {
     this.filteredPosts = posts.filter(function (post) {
       return post.title.toLowerCase().match(query);
     });
-    console.log(this.state.query, this.filteredPosts);
   }
 
   render() {
@@ -40,6 +38,7 @@ class App extends Component {
           />
         </div>
         <ul>
+          {this.search()}
           {this.filteredPosts.map((post, key) => (
             <li key={key}>
               <a href={post.url}>
